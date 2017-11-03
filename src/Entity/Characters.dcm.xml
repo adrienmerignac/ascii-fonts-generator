@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Characters" table="characters">
+    <unique-constraints>
+      <unique-constraint name="character_unicode_name" columns="characters_unicode_name"/>
+      <unique-constraint name="characters_unicode_name" columns="characters_unicode_name,characters_unicode_value"/>
+      <unique-constraint name="characters_unicode_value" columns="characters_unicode_value"/>
+    </unique-constraints>
+    <id name="charactersId" type="integer" column="characters_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="charactersUnicodeName" type="string" column="characters_unicode_name" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="charactersUnicodeValue" type="string" column="characters_unicode_value" length="2" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

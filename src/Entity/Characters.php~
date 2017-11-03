@@ -1,0 +1,40 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Characters
+ *
+ * @ORM\Table(name="characters", uniqueConstraints={@ORM\UniqueConstraint(name="character_unicode_name", columns={"characters_unicode_name"}), @ORM\UniqueConstraint(name="characters_unicode_name", columns={"characters_unicode_name", "characters_unicode_value"}), @ORM\UniqueConstraint(name="characters_unicode_value", columns={"characters_unicode_value"})})
+ * @ORM\Entity
+ */
+class Characters
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="characters_unicode_name", type="string", length=32, nullable=false)
+     */
+    private $charactersUnicodeName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="characters_unicode_value", type="string", length=2, nullable=false)
+     */
+    private $charactersUnicodeValue;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="characters_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $charactersId;
+
+
+}
+

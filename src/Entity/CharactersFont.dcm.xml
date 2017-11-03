@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CharactersFont" table="characters_font">
+    <indexes>
+      <index name="fonts_id" columns="fonts_id,characters_id"/>
+      <index name="characters_id" columns="characters_id"/>
+      <index name="IDX_31C5AE6D07E712C" columns="fonts_id"/>
+    </indexes>
+    <id name="charactersFontsId" type="integer" column="characters_fonts_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="charactersFontsWidth" type="integer" column="characters_fonts_width" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="fonts" target-entity="Fonts" fetch="LAZY">
+      <join-columns>
+        <join-column name="fonts_id" referenced-column-name="fonts_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="characters" target-entity="Characters" fetch="LAZY">
+      <join-columns>
+        <join-column name="characters_id" referenced-column-name="characters_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

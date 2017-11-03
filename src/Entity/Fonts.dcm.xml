@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Fonts" table="fonts">
+    <unique-constraints>
+      <unique-constraint name="font_name" columns="fonts_name"/>
+    </unique-constraints>
+    <id name="fontsId" type="integer" column="fonts_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fontsName" type="string" column="fonts_name" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fontsLineHeight" type="integer" column="fonts_line_height" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

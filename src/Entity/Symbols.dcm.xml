@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Symbols" table="symbols">
+    <unique-constraints>
+      <unique-constraint name="symbols_name" columns="symbols_name,symbols_value"/>
+      <unique-constraint name="symbols_name_2" columns="symbols_name,symbols_value"/>
+    </unique-constraints>
+    <id name="symbolsId" type="integer" column="symbols_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="symbolsName" type="string" column="symbols_name" length="32" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="symbolsValue" type="string" column="symbols_value" length="1" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>
