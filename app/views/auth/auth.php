@@ -10,13 +10,13 @@
 <?php if(!$user): ?>
 
 	<form action="" method="post">
-	  <div class="form-group col-xs-5 col-xs-offset-1">
+	  <div class="form-group col-xs-4 col-xs-offset-4">
 	    <input name="user_mail" class="form-control" placeholder="Mail">
 	  	</div>
-	    <div class="form-group col-xs-5">
+	    <div class="form-group col-xs-4 col-xs-offset-4">
 	      <input name="user_pswd" type="password" class="form-control" placeholder="Password">
 	    </div>
-	    <div class="form-group col-xs-1">
+	    <div class="form-group col-xs-1 col-xs-offset-4">
         <input name="token" value="<?= $token ?>" type="hidden" />
 	  <button type="submit" class="btn btn-info">LogIn</button>
 	  </div>

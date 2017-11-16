@@ -22,6 +22,7 @@ class ResponseTest extends \PHPUnit\Framework\TestCase
 	}
 	
 	/**
+	 * @covers \ASCII\Http\Response::__construct
 	 * @dataProvider constructProvider
 	 */
 	public function testConstruct ($propertyName, $value)
@@ -34,21 +35,35 @@ class ResponseTest extends \PHPUnit\Framework\TestCase
 		$this->assertTrue($value === $prop->getValue($response));
 	}
 	
-// 	public function statusProvider ()
-// 	{
-// 		return [
-// 			[null, null],	
-// 			[[], []],
-// 			["Hello", "World"],
-// 		];
-// 	}
+	/**
+	 * @covers \ASCII\Http\Response::__construct
+	 * @dataProvider constructProvider
+	 * @expectedException \TypeError
+	 */
+	public function testSetStatusException($status, $reason) 
+	{
+		$this->getResponse()->setStatus($status, $reason);
+	}
 	
-// 	/**
-// 	 * @dataProvider statusProvider
-// 	 * @expectedException \TypeError
-// 	 */
-//     public function testSetStatus ($status, $reason)
-//     {
-// 		$this->getResponse()->setStatus($status, $reason);
-//     }
+	/**
+	 * @covers \ASCII\Http\Response::__construct
+	 * @covers \ASCII\Http\Response::setStatus
+	 * @covers \ASCII\Http\Response::getStatus
+	 */
+	public function testSetStatus()
+	{
+		// on veut vérifier qu'après un setter les attributs évoluent
+		$response = (new \ReflectionClass(Response::class))->newInstanceArgs([]);
+		$response->setStatus(777, "Lucky");
+		// on vérifie status
+		$this->assertTrue("HTTP/1.1 777 Lucky" === $response->getStatus());
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 }
